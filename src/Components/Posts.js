@@ -18,33 +18,33 @@ function Post(props) {
    
   /*func de save e unsave*/
 
-  const [bookmark, setBookmark] = React.useState(<ion-icon name="bookmark-outline" onClick={save}></ion-icon>)
+  const [bookmark, setBookmark] = React.useState(<ion-icon name="bookmark-outline" onClick={save} data-test="save-post"></ion-icon>)
   
   function save() {
 
-    const resposta = <ion-icon name="bookmark" class="bookmark" onClick={unsave}></ion-icon>
+    const resposta = <ion-icon name="bookmark" class="bookmark" onClick={unsave} data-test="save-post"></ion-icon>
     setBookmark(resposta)
 
   }
 
   function unsave() {
     
-    const resposta = <ion-icon name="bookmark-outline" onClick={save}></ion-icon>
+    const resposta = <ion-icon name="bookmark-outline" onClick={save} data-test="save-post"></ion-icon>
     setBookmark(resposta)
 
   }
 
   /*func de like e deslike*/
 
-  const [like, setLike] = React.useState(<ion-icon name="heart-outline" onClick={curtir}></ion-icon>)
+  const [like, setLike] = React.useState(<ion-icon name="heart-outline" onClick={curtir} data-test="like-post"></ion-icon>)
   const [num1, setNum1] = React.useState(props.data.likes)
-  const [img, setImg] = React.useState(<img src={props.data.post} onClick={curtir}/>)
+  const [img, setImg] = React.useState(<img src={props.data.post} onClick={curtir} data-test="post-image"/>)
 
   function curtir() {
 
     const x = <img src={props.data.post}/>
     let novoNum = num1 + 1
-    const resposta = <ion-icon name="heart" class="heart" onClick={removeLike}></ion-icon>
+    const resposta = <ion-icon name="heart" class="heart" onClick={removeLike} data-test="like-post"></ion-icon>
     setLike(resposta)
     setNum1(novoNum)
     setImg(x)
@@ -53,9 +53,9 @@ function Post(props) {
 
   function removeLike() {
     
-    const x = <img src={props.data.post} onClick={curtir}/>
+    const x = <img src={props.data.post} onClick={curtir} data-test="post-image"/>
     const novoNum = num1
-    const resposta = <ion-icon name="heart-outline" onClick={curtir}></ion-icon>
+    const resposta = <ion-icon name="heart-outline" onClick={curtir} data-test="like-post"></ion-icon>
     setLike(resposta)
     setNum1(novoNum)
     setImg(x)
@@ -63,7 +63,7 @@ function Post(props) {
   }
 
   return(
-            <div class="post">
+            <div class="post" data-test="post">
                 <div class="topo">
                   <div class="usuario">
                     <img src={props.data.perfil} />
@@ -92,7 +92,7 @@ function Post(props) {
     
                   <div class="curtidas">
                     <img src={props.data.likerimg} />
-                    <div class="texto">
+                    <div class="texto"  data-test="likes-number">
                       Curtido por <strong>{props.data.liker}</strong> e <strong>outras {num1} pessoas</strong>
                     </div>
                   </div>
