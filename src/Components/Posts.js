@@ -4,6 +4,7 @@ export default function Posts() {
 
     const postinfo = [
         {nome: "meowed", perfil: "assets/img/meowed.svg", post: "assets/img/gato-telefone.svg", likes: 101523, likerimg: "assets/img/respondeai.svg", liker: "respondeai"},
+        {nome: "barked", perfil: "assets/img/barked.svg", post: "assets/img/dog.svg", likes: 99159, likerimg: "assets/img/adorable_animals.svg", liker: "adorable_animals"},
         {nome: "barked", perfil: "assets/img/barked.svg", post: "assets/img/dog.svg", likes: 99159, likerimg: "assets/img/adorable_animals.svg", liker: "adorable_animals"}
     ]
     return(
@@ -38,11 +39,11 @@ function Post(props) {
 
   const [like, setLike] = React.useState(<ion-icon name="heart-outline" onClick={curtir} data-test="like-post"></ion-icon>)
   const [num1, setNum1] = React.useState(props.data.likes)
-  const [img, setImg] = React.useState(<img src={props.data.post} onClick={curtir} data-test="post-image"/>)
+  const [img, setImg] = React.useState(<img src={props.data.post} alt="" onClick={curtir} data-test="post-image"/>)
 
   function curtir() {
 
-    const x = <img src={props.data.post}/>
+    const x = <img src={props.data.post} alt=""/>
     let novoNum = num1 + 1
     const resposta = <ion-icon name="heart" class="heart" onClick={removeLike} data-test="like-post"></ion-icon>
     setLike(resposta)
@@ -53,7 +54,7 @@ function Post(props) {
 
   function removeLike() {
     
-    const x = <img src={props.data.post} onClick={curtir} data-test="post-image"/>
+    const x = <img src={props.data.post} alt="" onClick={curtir} data-test="post-image"/>
     const novoNum = num1
     const resposta = <ion-icon name="heart-outline" onClick={curtir} data-test="like-post"></ion-icon>
     setLike(resposta)
@@ -66,7 +67,7 @@ function Post(props) {
             <div class="post" data-test="post">
                 <div class="topo">
                   <div class="usuario">
-                    <img src={props.data.perfil} />
+                    <img src={props.data.perfil} alt=""/>
                     {props.data.nome}
                   </div>
                   <div class="acoes">
@@ -91,7 +92,7 @@ function Post(props) {
                   </div>
     
                   <div class="curtidas">
-                    <img src={props.data.likerimg} />
+                    <img src={props.data.likerimg} alt="" />
                     <div class="texto"  data-test="likes-number">
                       Curtido por <strong>{props.data.liker}</strong> e <strong>outras {num1} pessoas</strong>
                     </div>

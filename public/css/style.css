@@ -350,10 +350,12 @@ body {
 
 .sidebar > .usuario .texto {
   display: flex;
-  flex-direction: column;
   margin-left: 14px;
   font-weight: 300;
   color: #8E8E8E;
+}
+.sidebar > .usuario .texto span{
+  display: flex;
 }
 
 .sidebar > .usuario .texto strong {
